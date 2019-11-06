@@ -1,9 +1,6 @@
-## Pull the mysql:5.6.40 image
-FROM mysql
-
-# Add a database
+FROM mysql:5.7
+ENV MYSQL_ROOT_PASSWORD 123
+ENV MYSQL_USER usuariobd
+ENV MYSQL_PASSWORD 1234
 ENV MYSQL_DATABASE tareadocker
-# Add the content of the sql-scripts/ directory to your image
-# All scripts in docker-entrypoint-initdb.d/ are automatically
-# executed during container startup
-COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
+ADD ./sql-scripts/ /docker-entrypoint-initdb.d/
